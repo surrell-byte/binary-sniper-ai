@@ -1,15 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Binary Sniper AI</title>
+    <meta charset="UTF-8">
+    <title>Binary Sniper AI Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>Binary Sniper AI Signals</h1>
+    <button onclick="fetchSignals()">Refresh Signals</button>
+    <ul id="signals"></ul>
 
-<h1>🔥 Binary Sniper AI</h1>
-
-<div id="signals"></div>
-
-<script src="app.js"></script>
+    <script>
+        async function fetchSignals() {
+            const res = await fetch('/signals');
+            const data = await res.json();
+            const list = document.getElementById('signals');
+            list.innerHTML = '';
+            data.forEach(signal => {
+                const li = document.createElement('li');
+                li.textContent = `${signal.pair} → ${signal.signal} (Score: ${signal.score})`;
+                list.appendChild(li);
+            });
+        }
+        fetchSignals(); // auto-load on page
+    </script>
 </body>
 </html>
