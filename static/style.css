@@ -1,0 +1,16 @@
+body {
+    background: #0f172a;
+    color: white;
+    font-family: Arial;
+    text-align: center;
+}
+
+.card {
+    background: #1e293b;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.call { color: #22c55e; }
+.put { color: #ef4444; }
